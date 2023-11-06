@@ -85,9 +85,9 @@ router.put("/product/:id", async(req, res) => {
             return res.status(400).json({ error: '비밀번호가 일치하지 않습니다.' });
         }
 
-        product.productName = productName;
-        product.description = description;
-        product.status = status;
+        product.productName = new productName;
+        product.description = new description;
+        product.status = new status;
 
         await product.save();
         res.status(200).json({ success: true });
