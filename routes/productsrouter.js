@@ -82,7 +82,7 @@ router.put("/product/:id", async(req, res) => {
         }
 
         if (product.password !== password) {
-            return res.status(400).json({ error: '비밀번호가 일치하지 않습니다.' });
+            return res.status(402).json({ error: '비밀번호가 일치하지 않습니다.' });
         }
 
         product.productName = new productName;
@@ -104,11 +104,11 @@ router.delete("/product/:id", async(req, res) => {
         const product = await Product.findById(req.params.id);
 
         if (!product) {
-            return res.status(400).json({ error: '상품을 찾을 수 없습니다.' });
+            return res.status(404).json({ error: '상품을 찾을 수 없습니다.' });
         }
 
         if (product.password !== password) {
-            return res.status(400).json({ error: '비밀번호가 일치하지 않습니다.' });
+            return res.status(402).json({ error: '비밀번호가 일치하지 않습니다.' });
         }
 
         await product.remove();
